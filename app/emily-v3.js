@@ -49,9 +49,10 @@ function pauseSlideMedia(slide){
 
 function revealDrivePlayer(video){
   if(!video.isConnected||video.dataset.fallback==='true')return;
+  const driveId=video.dataset.driveId;
+  if(!driveId)return;
   video.dataset.fallback='true';
   const slide=video.closest('.slide');
-  const driveId=video.dataset.driveId;
   const frame=document.createElement('iframe');
   frame.className='slideMedia driveFrame';
   frame.src=`https://drive.google.com/file/d/${driveId}/preview?autoplay=1`;

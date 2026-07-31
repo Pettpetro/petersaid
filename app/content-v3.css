@@ -442,12 +442,14 @@ button{font:inherit}
   border-left:8px solid currentColor;
 }
 .videoCover:hover .playMark{background:#fff;color:#111;transform:translate(-50%,-50%) scale(1.06)}
-.videoShell iframe{
+.videoShell iframe,.videoShell video{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   border:0;
+  object-fit:contain;
+  background:#000;
 }
 .videoShell.isPlaying .videoCover{opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .filmDescription{
@@ -473,6 +475,45 @@ button{font:inherit}
   letter-spacing:.15em;
 }
 
+.motionArchive{
+  min-height:72vh;
+  margin:0 4vw 10vh;
+  padding:7vw;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:50px;
+  background:var(--acid);
+  color:#101010;
+}
+.motionArchive small{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.motionArchive h2{
+  margin:25px 0 0;
+  font-size:clamp(58px,9vw,160px);
+  line-height:.78;
+  letter-spacing:-.085em;
+}
+.motionArchive a{
+  flex:0 0 auto;
+  min-width:250px;
+  padding:19px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  border:1px solid #101010;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  transition:background .3s,color .3s,transform .4s var(--ease);
+}
+.motionArchive a b{font-size:22px;font-weight:400}
+.motionArchive a:hover{background:#101010;color:#fff;transform:translateY(-5px)}
+
 .contentFooter{
   padding:35px 4vw;
   display:flex;
@@ -494,6 +535,7 @@ button{font:inherit}
   .filmsHeroBottom{align-items:flex-start;flex-direction:column}
   .filmList{grid-template-columns:1fr;column-gap:0}
   .filmMeta{min-height:auto}
+  .motionArchive{min-height:60vh;align-items:flex-start;flex-direction:column;justify-content:space-between}
 }
 
 @media(max-width:620px){
@@ -516,6 +558,9 @@ button{font:inherit}
   .filmMeta{align-items:flex-start;flex-direction:column}
   .filmMeta h2{font-size:15vw}
   .filmCaption span:last-child{display:none}
+  .motionArchive{margin:0 5vw 8vh;padding:10vw 7vw}
+  .motionArchive h2{font-size:16vw}
+  .motionArchive a{width:100%;min-width:0}
   .contentFooter{padding:30px 5vw}
 }
 
