@@ -18,6 +18,27 @@
     @media(max-width:760px){header{padding:12px 5vw}.brand{width:82px;height:40px}.brand img{width:135px;height:135px}.hero{min-height:82vh}.eyebrow{flex-direction:column}.hero h1{font-size:16vw}.summary{grid-template-columns:1fr;gap:30px;padding:75px 6vw}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}.steps{grid-template-columns:1fr 1fr}.steps article:nth-child(2){border-right:0}.steps article:nth-child(-n+2){border-bottom:1px solid var(--line)}.steps h3{margin-top:45px}.visual{padding:7vw 4vw}.visual img{min-height:55vh}.behanceProject{padding:70px 0}.behanceProjectHead{display:block;padding:0 5vw}.behanceProjectHead p{margin-top:22px}.behanceFrame{height:1600px}.localCase{padding-top:62px}.localCaseHead{display:block;padding-bottom:28px}.localCaseHead p{margin-top:24px}.siwaMedia figcaption{display:none}.siwaMedia video{max-height:70vh}}
   </style>
   <link rel="stylesheet" href="app/project-editorial-v2.css">
+  <style>
+    /* Keep large project names bold and editorial without overlapping words. */
+    .hero .heroCopy h1{
+      width:min(1500px,94vw);
+      max-width:none;
+      font-size:clamp(56px,10.2vw,164px);
+      line-height:.91;
+      letter-spacing:-.055em;
+      word-spacing:.08em;
+      text-wrap:balance;
+    }
+    @media(max-width:760px){
+      .hero .heroCopy h1{
+        width:92vw;
+        font-size:clamp(48px,15vw,88px);
+        line-height:.94;
+        letter-spacing:-.045em;
+        word-spacing:.06em;
+      }
+    }
+  </style>
 </head>
 <body>
   <header><a class="brand petroLogo" href="index.html" aria-label="Petro home"><img src="my logo.png" alt="Petro Designer"></a><div class="headerActions"><button class="themeBtn" id="themeBtn" type="button" aria-label="Switch color theme">☀</button><a class="back" href="index.html#work">← BACK TO PROJECTS</a></div></header>

@@ -159,27 +159,72 @@ button{font:inherit}
 .menuPanel nav{
   position:relative;
   z-index:1;
-  width:min(520px,82vw);
-  margin:16vh auto 0;
+  width:min(1080px,86vw);
+  height:min(62vh,590px);
+  margin:15vh auto 0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  counter-reset:menu-item;
+  border-top:1px solid rgba(255,255,255,.15);
+  border-left:1px solid rgba(255,255,255,.15);
   opacity:0;
   transform:translateY(55px);
   transition:opacity .42s .25s,transform .65s .25s var(--ease);
 }
-.menuPanel nav a{display:block;padding:13px 0}
+.menuPanel nav a{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-width:0;
+  padding:38px 42px;
+  border-right:1px solid rgba(255,255,255,.15);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  overflow:hidden;
+  counter-increment:menu-item;
+  transition:background .42s var(--ease),color .42s var(--ease);
+}
+.menuPanel nav a:before{
+  content:"0" counter(menu-item);
+  position:absolute;
+  top:28px;
+  left:40px;
+  color:#777b75;
+  font:9px/1 monospace;
+  letter-spacing:.2em;
+  transition:color .35s,transform .42s var(--ease);
+}
+.menuPanel nav a:after{
+  content:"\2197";
+  position:absolute;
+  top:24px;
+  right:36px;
+  color:#777b75;
+  font-size:20px;
+  transition:color .35s,transform .42s var(--ease);
+}
 .menuPanel nav strong{
   display:block;
-  font-size:clamp(27px,3vw,45px);
-  line-height:1;
+  font-size:clamp(32px,3.25vw,52px);
+  line-height:.95;
+  letter-spacing:-.045em;
   font-weight:800;
-  transition:color .25s,transform .35s;
+  transition:color .35s,transform .42s var(--ease);
 }
 .menuPanel nav small{
   display:block;
-  margin-top:10px;
-  color:#4f524e;
+  max-width:300px;
+  margin-top:17px;
+  color:#747872;
   font-size:12px;
+  line-height:1.55;
+  letter-spacing:.01em;
+  transition:color .35s,transform .42s var(--ease);
 }
-.menuPanel nav a:hover strong{color:var(--acid);transform:translateX(12px)}
+.menuPanel nav a:hover{background:var(--acid);color:#0a0c0b}
+.menuPanel nav a:hover:before,.menuPanel nav a:hover:after{color:#0a0c0b;transform:translate(4px,-4px)}
+.menuPanel nav a:hover strong,.menuPanel nav a:hover small{color:#0a0c0b;transform:translateX(8px)}
 .menuFooter{
   position:absolute;
   z-index:1;
@@ -466,9 +511,12 @@ button{font:inherit}
   .logo img{width:125px;height:125px}
   .menuToggle{min-width:85px;padding-right:42px}
   .menuToggle span{right:0;width:29px}
-  .menuPanel nav{margin-top:17vh}
-  .menuPanel nav a{padding:11px 0}
-  .menuPanel nav strong{font-size:10vw}
+  .menuPanel nav{width:90vw;height:min(62vh,520px);margin-top:17vh}
+  .menuPanel nav a{padding:24px 20px}
+  .menuPanel nav a:before{top:18px;left:19px;font-size:7px}
+  .menuPanel nav a:after{top:14px;right:17px;font-size:16px}
+  .menuPanel nav strong{font-size:clamp(24px,7vw,34px);line-height:1}
+  .menuPanel nav small{margin-top:11px;font-size:9px;line-height:1.4}
   .menuFooter{left:5vw;right:5vw}
   .slideCopy{left:5vw;bottom:17vh;width:90vw}
   .slideCopy small{margin-bottom:16px}
