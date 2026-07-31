@@ -301,19 +301,46 @@ button{font:inherit}
 }
 .slideCopy h2.longTitle{font-size:clamp(49px,6.55vw,122px)}
 .slideCopy a{
+  --circle-progress:0deg;
+  position:relative;
+  isolation:isolate;
   display:flex;
   align-items:center;
   gap:12px;
   width:max-content;
   margin-top:30px;
+  padding:12px 16px;
   color:var(--tone);
-  font-size:11px;
+  font-size:13px;
   font-weight:800;
   letter-spacing:.14em;
   opacity:0;
   transform:translateY(18px);
 }
-.slideCopy a:before{content:"";width:31px;height:1px;background:currentColor}
+.slideCopy a:before{content:"";width:36px;height:1px;background:currentColor}
+.slideCopy a:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-9px -15px -10px -12px;
+  border-radius:50%;
+  pointer-events:none;
+  background:conic-gradient(from -82deg,currentColor 0 var(--circle-progress),transparent var(--circle-progress) 360deg);
+  -webkit-mask:radial-gradient(ellipse at center,transparent 60%,#000 62%,#000 66%,transparent 68%);
+  mask:radial-gradient(ellipse at center,transparent 60%,#000 62%,#000 66%,transparent 68%);
+  transform:rotate(-4deg) scale(.96);
+  opacity:0;
+}
+.slide.isActive .slideCopy a:after{animation:ctaCircle 2.65s var(--ease) infinite}
+@property --circle-progress{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes ctaCircle{
+  0%,8%{--circle-progress:0deg;opacity:0;transform:rotate(-4deg) scale(.93)}
+  15%{opacity:.9}
+  56%{--circle-progress:360deg;opacity:.9;transform:rotate(-4deg) scale(1)}
+  76%{--circle-progress:360deg;opacity:.9}
+  100%{--circle-progress:360deg;opacity:0;transform:rotate(-4deg) scale(1.08)}
+}
+.slideCopy a:hover:after{animation-duration:1.45s}
 .slide.isActive .slideCopy small,
 .slide.isActive .slideCopy h1,
 .slide.isActive .slideCopy h2,
@@ -447,7 +474,7 @@ button{font:inherit}
   .slideCopy small{margin-bottom:16px}
   .slideCopy h1,.slideCopy h2{font-size:13.1vw;max-width:90vw;letter-spacing:-.07em}
   .slideCopy h2.longTitle{font-size:9.5vw}
-  .slideCopy a{margin-top:22px}
+  .slideCopy a{margin-top:22px;padding:10px 13px;font-size:11px}
   .slideArrow{top:auto;bottom:4vh}
   .slideArrow i{width:30px}
   .slidePrev{left:5vw}
@@ -463,4 +490,5 @@ button{font:inherit}
 @media(prefers-reduced-motion:reduce){
   .pageLoader i:after,.slideTimeline.animate>div i{animation:none}
   .slide,.slide>img,.slideMedia,.slideCopy>*{animation:none!important;transition:none!important}
+  .slideCopy a:after{animation:none!important;opacity:.8;--circle-progress:360deg}
 }

@@ -20,3 +20,20 @@ if(cards.length){
   }),{rootMargin:'120px 0px'});
   cards.forEach(card=>observer.observe(card));
 }
+
+document.querySelectorAll('.videoCover').forEach(cover=>cover.addEventListener('click',()=>{
+  const shell=cover.closest('.videoShell');
+  document.querySelectorAll('.videoShell.isPlaying').forEach(activeShell=>{
+    if(activeShell===shell)return;
+    activeShell.querySelector('iframe')?.remove();
+    activeShell.classList.remove('isPlaying');
+  });
+  if(shell.classList.contains('isPlaying'))return;
+  const frame=document.createElement('iframe');
+  frame.src=`https://drive.google.com/file/d/${shell.dataset.driveId}/preview?autoplay=1`;
+  frame.title=shell.dataset.title;
+  frame.allow='autoplay; fullscreen';
+  frame.setAttribute('allowfullscreen','');
+  shell.append(frame);
+  shell.classList.add('isPlaying');
+}));
