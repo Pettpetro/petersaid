@@ -380,10 +380,13 @@ button{font:inherit}
 .filmList{
   padding:4vh 4vw 12vh;
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  column-gap:2.4vw;
+  grid-template-columns:repeat(2,minmax(280px,520px));
+  justify-content:center;
+  column-gap:clamp(32px,5vw,90px);
 }
 .filmCard{
+  width:100%;
+  max-width:520px;
   min-width:0;
   padding:7vh 0;
   border-bottom:1px solid var(--line);
@@ -410,7 +413,7 @@ button{font:inherit}
 .videoShell{
   position:relative;
   width:100%;
-  aspect-ratio:16/9;
+  aspect-ratio:9/16;
   overflow:hidden;
   background:#050505;
 }
@@ -477,7 +480,8 @@ button{font:inherit}
   width:100%;
   height:100%;
   border:0;
-  object-fit:contain;
+  object-fit:cover;
+  object-position:center;
   background:#000;
 }
 .videoShell.isPlaying .videoCover{opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
@@ -562,7 +566,7 @@ button{font:inherit}
   .aboutStats article:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .sectionGrid{grid-template-columns:1fr;gap:45px}
   .filmsHeroBottom{align-items:flex-start;flex-direction:column}
-  .filmList{grid-template-columns:1fr;column-gap:0}
+  .filmList{grid-template-columns:minmax(0,520px);column-gap:0;justify-content:center}
   .filmMeta{min-height:auto}
   .motionArchive{min-height:60vh;align-items:flex-start;flex-direction:column;justify-content:space-between}
 }
