@@ -314,18 +314,47 @@ button{font:inherit}
 .contactActions a:hover{background:#111;color:#fff}
 
 .filmsHero{
-  min-height:82svh;
+  position:relative;
+  isolation:isolate;
+  min-height:100svh;
   padding:21vh 4vw 9vh;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+  overflow:hidden;
   border-bottom:1px solid var(--line);
+}
+.filmsHero:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(5,7,10,.42) 0%,rgba(5,7,10,.08) 58%,rgba(5,7,10,.18) 100%),
+    linear-gradient(180deg,rgba(5,7,10,.12) 30%,rgba(5,7,10,.93) 100%);
+}
+.filmsHeroImage{
+  position:absolute;
+  z-index:-2;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.88) contrast(1.04);
+  animation:filmsHeroReveal 1.5s var(--ease) both;
+}
+@keyframes filmsHeroReveal{
+  from{opacity:.25;transform:scale(1.075)}
+  to{opacity:1;transform:scale(1)}
 }
 .filmsHero h1{
   margin:0;
   font-size:clamp(82px,16vw,300px);
   line-height:.72;
   letter-spacing:-.095em;
+  text-shadow:0 12px 45px rgba(0,0,0,.32);
 }
 .filmsHeroBottom{
   margin-top:50px;
@@ -567,5 +596,6 @@ button{font:inherit}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .contentLoader i:after{animation:none}
+  .filmsHeroImage{animation:none}
   .filmCard{opacity:1;transform:none;transition:none}
 }
