@@ -159,12 +159,12 @@ button{font:inherit}
 .menuPanel nav{
   position:relative;
   z-index:1;
-  width:min(1080px,86vw);
-  height:min(62vh,590px);
+  width:min(1220px,88vw);
+  height:min(31vh,285px);
   margin:15vh auto 0;
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-template-rows:repeat(2,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:1fr;
   counter-reset:menu-item;
   border-top:1px solid rgba(255,255,255,.15);
   border-left:1px solid rgba(255,255,255,.15);
@@ -206,7 +206,7 @@ button{font:inherit}
 }
 .menuPanel nav strong{
   display:block;
-  font-size:clamp(32px,3.25vw,52px);
+  font-size:clamp(30px,3vw,50px);
   line-height:.95;
   letter-spacing:-.045em;
   font-weight:800;
@@ -225,6 +225,78 @@ button{font:inherit}
 .menuPanel nav a:hover{background:var(--acid);color:#0a0c0b}
 .menuPanel nav a:hover:before,.menuPanel nav a:hover:after{color:#0a0c0b;transform:translate(4px,-4px)}
 .menuPanel nav a:hover strong,.menuPanel nav a:hover small{color:#0a0c0b;transform:translateX(8px)}
+.menuContact{
+  position:relative;
+  z-index:1;
+  width:min(1220px,88vw);
+  min-height:210px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(270px,.78fr) minmax(0,1.22fr);
+  border-left:1px solid rgba(255,255,255,.15);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .45s .34s,transform .7s .34s var(--ease);
+}
+.menuContactCopy{
+  padding:31px 38px;
+  border-right:1px solid rgba(255,255,255,.15);
+}
+.menuContactCopy>small{
+  color:#777b75;
+  font:8px/1 monospace;
+  letter-spacing:.19em;
+}
+.menuContactCopy h2{
+  margin:28px 0 10px;
+  font-size:clamp(30px,3.1vw,50px);
+  line-height:.9;
+  letter-spacing:-.05em;
+}
+.menuContactCopy p{
+  max-width:410px;
+  margin:0;
+  color:#777b75;
+  font-size:11px;
+  line-height:1.6;
+}
+.menuContactIcons{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+}
+.menuContactIcons a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:16px;
+  min-width:0;
+  border-right:1px solid rgba(255,255,255,.15);
+  overflow:hidden;
+  transition:background .38s var(--ease),color .38s var(--ease);
+}
+.menuContactIcons img{
+  width:25px;
+  height:25px;
+  object-fit:contain;
+  filter:invert(1);
+  transition:filter .35s,transform .5s var(--ease);
+}
+.menuContactIcons span{
+  color:#777b75;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:color .35s,transform .5s var(--ease);
+}
+.menuContactIcons a:hover{background:var(--acid);color:#0a0c0b}
+.menuContactIcons a:hover img{filter:none;transform:translateY(-5px) scale(1.2) rotate(-7deg)}
+.menuContactIcons a:hover span{color:#0a0c0b;transform:translateY(2px)}
+.menuContactIcons a[aria-label="WhatsApp"] img{filter:invert(1) grayscale(1) brightness(3) contrast(8)}
+.menuContactIcons a[aria-label="WhatsApp"]:hover img{filter:none}
 .menuFooter{
   position:absolute;
   z-index:1;
@@ -242,6 +314,7 @@ button{font:inherit}
 .menuOpen .menuPanel{visibility:visible}
 .menuOpen .menuBackdrop{transform:none}
 .menuOpen .menuPanel nav{opacity:1;transform:none}
+.menuOpen .menuContact{opacity:1;transform:none}
 .menuOpen .menuFooter{opacity:1}
 
 .homeSlider{
@@ -511,13 +584,20 @@ button{font:inherit}
   .logo img{width:125px;height:125px}
   .menuToggle{min-width:85px;padding-right:42px}
   .menuToggle span{right:0;width:29px}
-  .menuPanel nav{width:90vw;height:min(62vh,520px);margin-top:17vh}
-  .menuPanel nav a{padding:24px 20px}
+  .menuPanel{overflow-y:auto}
+  .menuPanel nav{width:90vw;height:230px;margin-top:15vh}
+  .menuPanel nav a{padding:24px 14px}
   .menuPanel nav a:before{top:18px;left:19px;font-size:7px}
   .menuPanel nav a:after{top:14px;right:17px;font-size:16px}
-  .menuPanel nav strong{font-size:clamp(24px,7vw,34px);line-height:1}
+  .menuPanel nav strong{font-size:clamp(19px,5.6vw,30px);line-height:1}
   .menuPanel nav small{margin-top:11px;font-size:9px;line-height:1.4}
-  .menuFooter{left:5vw;right:5vw}
+  .menuContact{width:90vw;min-height:310px;grid-template-columns:1fr}
+  .menuContactCopy{padding:24px 20px;border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}
+  .menuContactCopy h2{margin-top:20px}
+  .menuContactIcons{min-height:160px;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .menuContactIcons a{min-height:80px;border-bottom:1px solid rgba(255,255,255,.15)}
+  .menuContactIcons img{width:20px;height:20px}
+  .menuFooter{position:relative;left:auto;right:auto;bottom:auto;margin:28px 5vw 24px}
   .slideCopy{left:5vw;bottom:17vh;width:90vw}
   .slideCopy small{margin-bottom:16px}
   .slideCopy h1,.slideCopy h2{font-size:13.1vw;max-width:90vw;letter-spacing:-.07em}
