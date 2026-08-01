@@ -418,6 +418,7 @@ button{font:inherit}
   transform:translateY(65px);
 }
 .slideCopy h2.longTitle{font-size:clamp(49px,6.55vw,122px)}
+.slideCopy h2.xlongTitle{font-size:clamp(34px,4.65vw,86px);letter-spacing:-.06em}
 .slideCopy a{
   --circle-progress:0deg;
   position:relative;
@@ -602,6 +603,7 @@ button{font:inherit}
   .slideCopy small{margin-bottom:16px}
   .slideCopy h1,.slideCopy h2{font-size:13.1vw;max-width:90vw;letter-spacing:-.07em}
   .slideCopy h2.longTitle{font-size:9.5vw}
+  .slideCopy h2.xlongTitle{font-size:7.2vw;letter-spacing:-.045em}
   .slideCopy a{margin-top:22px;padding:10px 13px;font-size:11px}
   .slideArrow{top:auto;bottom:4vh}
   .slideArrow i{width:30px}
